@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    height: 100vh;
+    background-color: rgb(145, 145, 145);
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: aliceblue;
+    padding: 0.5%;
+}
+
+h1,p {
+    margin: 0%;
+}
+
+main {
+    flex: auto;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+#interface {
+    height: 700px;
+    width: min(1000px, 80%);
+    background-color: aliceblue;
+}
+
+footer {
+    background-color: aliceblue;
+    padding: 0.5%;
+    display: flex;
+    justify-content: center;
+}
+
+footer p, footer a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+}
+
