@@ -1,3 +1,5 @@
+export default Project;
+
 const Project = (name, toDosList = []) => {
     const getName = () => name;
     let toDos = toDosList;
@@ -6,4 +8,3 @@ const Project = (name, toDosList = []) => {
     return {getName, getToDos, addToDos};
 } 
 
-export default Project;
