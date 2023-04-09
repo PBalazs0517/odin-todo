@@ -1,10 +1,11 @@
-export default Project;
-
 const Project = (name, toDosList = []) => {
     const getName = () => name;
-    let toDos = toDosList;
+    const id = name.replace(/\s/g, "");
+    const getId = () => id;
+    const toDos = toDosList;
     const addToDos = (todo) => toDos.push();
     const getToDos = () => toDos;
-    return {getName, getToDos, addToDos};
+    return {getName, getId, getToDos, addToDos};
 } 
 
+export default Project;

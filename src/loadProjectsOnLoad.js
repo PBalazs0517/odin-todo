@@ -2,9 +2,9 @@ import Project from './project.js';
 import { Projects } from './index.js';
 
 export default function() {
+    // gets all projects and recreates the Project instancies
     for(let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = JSON.parse(localStorage.getItem(key));
+        const value = JSON.parse(localStorage.getItem(`project${i}`));
         const project = Project(value.name, value.todos);
         Projects.pushStorage(project);
         addToDom(project);
@@ -14,7 +14,7 @@ export default function() {
 function addToDom(p) {
     const ul = document.getElementById('projectList');
     const newLi = document.createElement('li');
-    newLi.id = p.getName().replace(/\s/g, "");
+    newLi.id = p.getId();
     newLi.innerHTML = p.getName();
     ul.appendChild(newLi);   
 }
