@@ -60,9 +60,6 @@ aside ul {
     height: calc(100% - 2 * 5.5%);
     overflow: auto;
 }
-aside ul h2 {
-    cursor: pointer;
-}
 aside ul li {
     padding-left: 5%;
     line-height: 30px;
@@ -83,7 +80,7 @@ aside ul li {
     justify-content: center;
 }
 
-#todosCont {
+#mainCont {
     flex: 1;
     padding: 5.5% 40px;
 }
