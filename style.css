@@ -65,7 +65,7 @@ aside ul li {
     line-height: 30px;
     cursor: pointer;
 }
-#addProject {
+.addProjectAndTodo {
     position: absolute;
     bottom: 7%;
     left: 40px;
@@ -81,8 +81,14 @@ aside ul li {
 }
 
 #mainCont {
+    height: 100%;
+    position: relative;
     flex: 1;
     padding: 5.5% 40px;
+    overflow: auto;
+}
+.title {
+    margin: 0 0 10px 0;
 }
 
 footer {
@@ -113,13 +119,52 @@ footer p, footer a {
     height: 30px;
     font-size: 25px;
 }
-#addBtn {
+.addBtn {
     grid-area: addBtn;
     height: 30px;
     font-size: 25px;
 }
-#cancelBtn {
+.cancelBtn {
     grid-area: cancelBtn;
     height: 30px;
     font-size: 25px;
+}
+
+/* todo add interface */
+
+#todoInterface {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    grid-template-areas:
+        'todoForm todoForm' 
+        'addBtn cancelBtn';
+}
+#todoForm {
+    grid-area: todoForm;
+    width: 100%;
+    background-color: rgb(255, 255, 76);
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+}
+#todoNameIn {
+    flex: 1;
+    height: 25px;
+    font-size: 24px;
+}
+
+/* todo */
+
+#todoCont {
+    display: flex;
+    width: 100%;
+    background-color: rgb(69, 218, 255);
+    align-items: center;
+    padding: 5px 15px;
+    margin-block: 10px;
+    gap: 10px;
+}
+.todoName {
+    margin: 0;
+    margin-right: auto;
 }
