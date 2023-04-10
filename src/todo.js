@@ -1,12 +1,11 @@
-const Todo = (project = "home", name = 'To do!', date = 'No Date', priority = 'low', state = false) => {
-    const getProject = () => project;
+const Todo = (name, date, priority, state = false) => {
+    let currentState = state;
     const getName = () => name;
     const getDate = () => date;
     const getPriority = () => priority;
-    const getState = () => state
+    const getState = () => currentState;
 
     return {
-        getProject,
         getName,
         getDate,
         getPriority,

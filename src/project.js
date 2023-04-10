@@ -13,9 +13,10 @@ const Project = (name, toDosList = []) => {
     counter.incrementCount();
     const getId = () => id;
     const toDos = toDosList;
-    const addToDos = (todo) => toDos.push();
+    const addToDos = (todo) => toDos.push(todo);
     const getToDos = () => toDos;
-    return {getName, getId, getToDos, addToDos};
+    const updateToDo = (i, t) => toDos[i] = t;
+    return {getName, getId, getToDos, addToDos, updateToDo};
 } 
 
 export default Project;

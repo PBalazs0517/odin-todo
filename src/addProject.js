@@ -1,6 +1,8 @@
 import Project from "./project";
 import { Projects } from "./index";
 import { activeProject } from './projectSelector.js';
+import { addTodoBtn, active } from './addTodo.js';
+import loadTodos from "./loadTodos";
 
 export default function addProject() {
     // clears the interface 
@@ -18,10 +20,12 @@ export default function addProject() {
     div.appendChild(projectInput);
     let addBtn = document.createElement('button');
     addBtn.id = 'addBtn';
+    addBtn.classList.add('addBtn');
     addBtn.innerHTML = 'Add';
     div.appendChild(addBtn);
     let cancelBtn = document.createElement('button');
     cancelBtn.id = 'cancelBtn';
+    cancelBtn.classList.add('cancelBtn');
     cancelBtn.innerHTML = 'Cancel';
     div.appendChild(cancelBtn);
 
@@ -33,7 +37,8 @@ export default function addProject() {
 };
 
 function addBtnLogic() {
-    // makes sure that there are no mathcing or empty ids
+    let mainCont = document.getElementById('mainCont');
+    // makes sure that there are no mathcing or empty names
     const existingProjects = Projects.getStorage();
     const projectNames = existingProjects.map(p => p.getName());
     if(projectNames.some(name => name == document.getElementById('projectInput').value)) {
@@ -56,22 +61,32 @@ function addBtnLogic() {
         newLi.innerHTML = newProject.getName();
         ul.appendChild(newLi);
         newLi.addEventListener('click', () => {
-            console.log(newProject.getId())
+            let mainCont = document.getElementById('mainCont');
+            hideUI(mainCont)
+            // sets the active project so it knows which project to add the todos
             activeProject = Projects.getStorage()[newProject.getId()]; 
+            // generates the output of the projects
+            let title = document.createElement('h1');
+            title.classList.add('title');
+            title.innerHTML = activeProject.getName();
+            mainCont.appendChild(title);
+            addTodoBtn();
+            loadTodos();
         });
     
-        hideUI();
+        hideUI(mainCont);
     }; 
 
 };
 
 function cancelBtnLogic() {
-    hideUI()
+    hideUI(mainCont);
 }
 
-function hideUI() {
-    let mainCont = document.getElementById('mainCont');
-    while(mainCont.firstChild) {
-        mainCont.removeChild(mainCont.lastChild);
+function hideUI(cont) {
+    while(cont.firstChild) {
+        cont.removeChild(cont.lastChild);
     }
+    // sets the vale of active so it knows when can it generate a new add todo interface
+    active = false;
 }
