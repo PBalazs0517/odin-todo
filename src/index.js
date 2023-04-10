@@ -1,7 +1,7 @@
 import addProject from './addProject.js';
 import loadProjectsOnLoad from './loadProjectsOnLoad.js';
 import Project from './project.js';
-import { addProjectInterface } from './projectSelector.js';
+import { activeProject } from './projectSelector.js';
 export {Projects}
 
 
@@ -20,5 +20,3 @@ loadProjectsOnLoad();
 document.getElementById('addProject').addEventListener('click', () => {
     addProject();
 });
-
-addProjectInterface()

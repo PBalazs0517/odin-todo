@@ -1,5 +1,6 @@
 import Project from "./project";
 import { Projects } from "./index";
+import { activeProject } from './projectSelector.js';
 
 export default function addProject() {
     // clears the interface 
@@ -34,9 +35,9 @@ export default function addProject() {
 function addBtnLogic() {
     // makes sure that there are no mathcing or empty ids
     const existingProjects = Projects.getStorage();
-    const projectIds = existingProjects.map(p => p.getId());
-    if(projectIds.some(id => id == (document.getElementById('projectInput').value).replace(/\s/g, ""))) {
-        alert('The names have to be unique (spaces are ignored)');
+    const projectNames = existingProjects.map(p => p.getName());
+    if(projectNames.some(name => name == document.getElementById('projectInput').value)) {
+        alert('The names have to be unique');
         document.getElementById('projectInput').innerHTML = "";
     } else if ((document.getElementById('projectInput').value).replace(/\s/g, "") == "") {
         alert('You must add a name to your project');
@@ -54,8 +55,12 @@ function addBtnLogic() {
         newLi.id = newProject.getId();
         newLi.innerHTML = newProject.getName();
         ul.appendChild(newLi);
+        newLi.addEventListener('click', () => {
+            console.log(newProject.getId())
+            activeProject = Projects.getStorage()[newProject.getId()]; 
+        });
     
-        hideUI()
+        hideUI();
     }; 
 
 };

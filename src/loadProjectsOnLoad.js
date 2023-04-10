@@ -1,5 +1,6 @@
 import Project from './project.js';
 import { Projects } from './index.js';
+import { activeProject } from './projectSelector.js';
 
 export default function() {
     // gets all projects and recreates the Project instancies
@@ -8,6 +9,7 @@ export default function() {
         const project = Project(value.name, value.todos);
         Projects.pushStorage(project);
         addToDom(project);
+
     }
 }
 
@@ -17,4 +19,9 @@ function addToDom(p) {
     newLi.id = p.getId();
     newLi.innerHTML = p.getName();
     ul.appendChild(newLi);   
+    newLi.addEventListener('click', () => {
+        console.log(p.getId())
+        activeProject = Projects.getStorage()[p.getId()]; 
+    })
 }
+
